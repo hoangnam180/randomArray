@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>in</button>
+    <script>
+      const element = document.querySelector("button");
+      const a = [
+        "Mango",
+        "Orange",
+        "Banana",
+        "Apple",
+        "Grapes",
+        "Berry",
+        "Peach",
+      ];
+
+      function searchRandom(count, arr) {
+        let newArray = [],
+          counter = 0;
+
+        while (counter < count) {
+          let rand = arr[Math.floor(Math.random() * arr.length)];
+          if (!newArray.some((an) => an === rand)) {
+            newArray.push(rand);
+            counter++;
+          }
+        }
+
+        return newArray;
+      }
+
+      function loggerArr() {
+        let newArray = searchRandom(a.length, a);
+        console.log(newArray);
+        let index = 0;
+        element.addEventListener("click", (e) => {
+          if (index < a.length - 1) {
+            index++;
+            console.log(newArray[index]);
+          } else {
+            newArray = searchRandom(a.length, a);
+            index = 0;
+            console.log(newArray);
+            console.log(newArray[index]);
+          }
+        });
+      }
+
+      loggerArr();
+    </script>
+  </body>
+</html>
